@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Field, reduxForm } from 'redux-form';
-import { SelectFormField } from 'lib/components/SelectFormField';
+import { SelectFormField } from 'lib/SelectFormField';
 import { Countries } from './Countries'
 
 interface Props {

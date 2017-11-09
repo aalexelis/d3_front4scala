@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { Map } from 'immutable'
 
 import { Countries } from './Countries'
+import { Api, Request } from 'lib/Api'
 import { Validator } from './FormValidator'
 import FormView from './FormView'
 
@@ -26,13 +27,27 @@ class FormCtrl extends React.Component<Props, {}> {
 			throw new SubmissionError({ _error: msg })
 		}
 		else {
+			const apiPromise = new Promise((resolve, reject) => {
+
+				// url: string;
+				// contentType?: string;
+				// payload?: any;
+				// csrfToken?: string;
+				const request: Request = {
+					url: '/api/backend',
+					payload: formData.toJS().toString()
+				}
+				Api.post(request);
+			})
+
+
 			//Promise for redux-form
 			const formPromise = new Promise((resolve, reject) => {
-
+				apiPromise.then(() => {
 					resolve(); //trigger onSubmitSuccess on the form
-
-					//reject(new SubmissionError({ _error: 'error' })); //trigger onSubmitFail on the form
-
+				}).catch((error: any) => {
+					reject(new SubmissionError({ _error: error })); //trigger onSubmitFail on the form
+				});
 			});
 
 			return formPromise;
