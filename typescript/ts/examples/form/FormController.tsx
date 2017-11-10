@@ -34,8 +34,8 @@ class FormCtrl extends React.Component<Props, {}> {
 				// payload?: any;
 				// csrfToken?: string;
 				const request: Request = {
-					url: '/api/backend',
-					payload: formData.toJS().toString()
+					url: 'http://localhost/api/backend',
+					payload: formData.toJS()
 				}
 				Api.post(request);
 			})
