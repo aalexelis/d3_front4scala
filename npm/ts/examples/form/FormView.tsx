@@ -8,7 +8,8 @@ interface Props {
     handleSubmit?: any;
     pristine?: any;
     submitting?: any,
-    error?: any
+    error?: any,
+    success: boolean
 }
 class FormView extends React.Component<Props, any> {
     constructor(props: any) {
@@ -19,10 +20,11 @@ class FormView extends React.Component<Props, any> {
         const countries = Countries.map((v: any) => {
             return { key: v.id, id: v.id, value: v.id, label: v.label };
         });
-        const { error, handleSubmit, pristine, submitting } = this.props
+        const { success, error, handleSubmit, pristine, submitting } = this.props
         return (
             <form onSubmit={handleSubmit}>
-                {error && <strong style={{ color: 'red' }}>{error}</strong>}
+                {error && <p className="bg-danger" style={{ padding: 15 }}>{error}</p>}
+                {success && <p className="bg-success" style={{ padding: 15 }}>Saved successfully.</p>}
                 <div className="form-group required">
                     <label className="control-label" htmlFor="name">Name</label>
                     <Field component="input" type="text" required={true} name="name" className="form-control form-control input-sm" placeholder="(eg. Akiko Takeda)" />
@@ -53,7 +55,7 @@ class FormView extends React.Component<Props, any> {
                     />
                 </div>
                 <div className="form-group">
-                    <button type="submit">Submit</button>
+                    <button type="submit" disabled={submitting} className="btn btn-sm btn-primary">Save</button>
                 </div>
             </form>
         );

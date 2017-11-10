@@ -13340,15 +13340,15 @@ var FormCtrl = function (_React$Component) {
                 var msg = 'Please check the following fields: ' + errors.toJS().join(", ");
                 throw new redux_form_1.SubmissionError({ _error: msg });
             } else {
-                var apiPromise = new Promise(function (resolve, reject) {
+                var formPromise = new Promise(function (resolve, reject) {
                     var request = {
                         url: jsRoutes.controllers.PlainTypescriptController.submitForm().url,
                         payload: formData.toJS()
                     };
-                    Api_1.Api.post(request);
-                });
-                var formPromise = new Promise(function (resolve, reject) {
-                    apiPromise.then(function () {
+                    Api_1.Api.post(request).then(function () {
+                        _this.setState({
+                            success: true
+                        });
                         resolve();
                     }).catch(function (error) {
                         reject(new redux_form_1.SubmissionError({ _error: error }));
@@ -13357,13 +13357,16 @@ var FormCtrl = function (_React$Component) {
                 return formPromise;
             }
         };
+        _this.state = {
+            success: false
+        };
         return _this;
     }
 
     _createClass(FormCtrl, [{
         key: "render",
         value: function render() {
-            return React.createElement(FormView_1.default, { onSubmit: this.handleSubmit });
+            return React.createElement(FormView_1.default, { onSubmit: this.handleSubmit, success: this.state.success });
         }
     }]);
 
@@ -23727,6 +23730,7 @@ var FormView = function (_React$Component) {
                 return { key: v.id, id: v.id, value: v.id, label: v.label };
             });
             var _props = this.props,
+                success = _props.success,
                 error = _props.error,
                 handleSubmit = _props.handleSubmit,
                 pristine = _props.pristine,
@@ -23736,9 +23740,14 @@ var FormView = function (_React$Component) {
                 "form",
                 { onSubmit: handleSubmit },
                 error && React.createElement(
-                    "strong",
-                    { style: { color: 'red' } },
+                    "p",
+                    { className: "bg-danger", style: { padding: 15 } },
                     error
+                ),
+                success && React.createElement(
+                    "p",
+                    { className: "bg-success", style: { padding: 15 } },
+                    "Saved successfully."
                 ),
                 React.createElement(
                     "div",
@@ -23800,8 +23809,8 @@ var FormView = function (_React$Component) {
                     { className: "form-group" },
                     React.createElement(
                         "button",
-                        { type: "submit" },
-                        "Submit"
+                        { type: "submit", disabled: submitting, className: "btn btn-sm btn-primary" },
+                        "Save"
                     )
                 )
             );
