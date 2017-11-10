@@ -9,19 +9,13 @@ import { Api, Request } from 'lib/Api'
 import { Validator } from './FormValidator'
 import FormView from './FormView'
 
+
 interface Props extends React.Props<any> {
 }
 
-interface State {
-	success: boolean
-}
-
-class FormCtrl extends React.Component<Props, State> {
+class FormCtrl extends React.Component<Props, {}> {
 	constructor(props: any) {
 		super(props);
-		this.state = {
-			success: false,
-		}
 	}
 
 	handleSubmit = (values: any) => {
@@ -33,23 +27,23 @@ class FormCtrl extends React.Component<Props, State> {
 			throw new SubmissionError({ _error: msg })
 		}
 		else {
+			const apiPromise = new Promise((resolve, reject) => {
+
+				// url: string;
+				// contentType?: string;
+				// payload?: any;
+				// csrfToken?: string;
+				const request: Request = {
+					url: 'http://localhost/api/backend',
+					payload: formData.toJS()
+				}
+				Api.post(request);
+			})
+
 
 			//Promise for redux-form
 			const formPromise = new Promise((resolve, reject) => {
-				const request: Request = {
-					url: jsRoutes.controllers.PlainTypescriptController.submitForm().url,
-					payload: {
-						name: formData.get('name'),
-						birthDate: formData.get('birthDate'),
-						phone: formData.get('phone'),
-						email: formData.get('email'),
-						nationality: formData.get('nationality').id
-					}
-				}
-				Api.post(request).then(() => {
-					this.setState({
-						success: true
-					})
+				apiPromise.then(() => {
 					resolve(); //trigger onSubmitSuccess on the form
 				}).catch((error: any) => {
 					reject(new SubmissionError({ _error: error })); //trigger onSubmitFail on the form
@@ -62,7 +56,7 @@ class FormCtrl extends React.Component<Props, State> {
 
 	render() {
 		return (
-			<FormView onSubmit={this.handleSubmit} success={this.state.success}/>
+			<FormView onSubmit={this.handleSubmit}/>
 		);
 	}
 }

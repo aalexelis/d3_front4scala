@@ -13343,7 +13343,13 @@ var FormCtrl = function (_React$Component) {
                 var formPromise = new Promise(function (resolve, reject) {
                     var request = {
                         url: jsRoutes.controllers.PlainTypescriptController.submitForm().url,
-                        payload: formData.toJS()
+                        payload: {
+                            name: formData.get('name'),
+                            birthDate: formData.get('birthDate'),
+                            phone: formData.get('phone'),
+                            email: formData.get('email'),
+                            nationality: formData.get('nationality').id
+                        }
                     };
                     Api_1.Api.post(request).then(function () {
                         _this.setState({
@@ -23675,8 +23681,8 @@ var validateEmail = function validateEmail(email) {
 };
 exports.Validator = function (formData) {
     var errors = immutable_1.List();
-    if (!validateObject(formData.get('currentLocation'))) {
-        errors = errors.push('Current location');
+    if (!validateObject(formData.get('nationality'))) {
+        errors = errors.push('Nationality');
     }
     if (!validateEmail(formData.get('email'))) {
         errors = errors.push('E-Mail');
@@ -23799,10 +23805,10 @@ var FormView = function (_React$Component) {
                     { className: "form-group required" },
                     React.createElement(
                         "label",
-                        { className: "control-label", htmlFor: "currentLocation" },
-                        "Current location"
+                        { className: "control-label", htmlFor: "nationality" },
+                        "Nationality"
                     ),
-                    React.createElement(redux_form_1.Field, { required: true, name: "currentLocation", options: countries, component: SelectFormField_1.SelectFormField, placeholder: "Select or type..." })
+                    React.createElement(redux_form_1.Field, { required: true, name: "nationality", options: countries, component: SelectFormField_1.SelectFormField, placeholder: "Select or type..." })
                 ),
                 React.createElement(
                     "div",

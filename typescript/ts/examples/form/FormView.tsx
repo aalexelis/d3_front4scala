@@ -8,8 +8,7 @@ interface Props {
     handleSubmit?: any;
     pristine?: any;
     submitting?: any,
-    error?: any,
-    success: boolean
+    error?: any
 }
 class FormView extends React.Component<Props, any> {
     constructor(props: any) {
@@ -20,11 +19,10 @@ class FormView extends React.Component<Props, any> {
         const countries = Countries.map((v: any) => {
             return { key: v.id, id: v.id, value: v.id, label: v.label };
         });
-        const { success, error, handleSubmit, pristine, submitting } = this.props
+        const { error, handleSubmit, pristine, submitting } = this.props
         return (
             <form onSubmit={handleSubmit}>
-                {error && <p className="bg-danger" style={{ padding: 15 }}>{error}</p>}
-                {success && <p className="bg-success" style={{ padding: 15 }}>Saved successfully.</p>}
+                {error && <strong style={{ color: 'red' }}>{error}</strong>}
                 <div className="form-group required">
                     <label className="control-label" htmlFor="name">Name</label>
                     <Field component="input" type="text" required={true} name="name" className="form-control form-control input-sm" placeholder="(eg. Akiko Takeda)" />
@@ -45,17 +43,17 @@ class FormView extends React.Component<Props, any> {
                 </div>
 
                 <div className="form-group required">
-                    <label className="control-label" htmlFor="nationality">Nationality</label>
+                    <label className="control-label" htmlFor="currentLocation">Current location</label>
                     <Field
                         required={true}
-                        name='nationality'
+                        name='currentLocation'
                         options={countries}
                         component={SelectFormField}
                         placeholder='Select or type...'
                     />
                 </div>
                 <div className="form-group">
-                    <button type="submit" disabled={submitting} className="btn btn-sm btn-primary">Save</button>
+                    <button type="submit">Submit</button>
                 </div>
             </form>
         );
