@@ -45,11 +45,16 @@ class FormCtrl extends React.Component<Props, State> {
 						nationality: formData.get('nationality').id
 					}
 				}
-				Api.post(request).then(() => {
-					this.setState({
-						success: true
-					})
-					resolve(); //trigger onSubmitSuccess on the form
+				Api.post(request).then((response:any) => {
+					if (response.status === 200) {
+						this.setState({
+							success: true
+						})
+						resolve(); //trigger onSubmitSuccess on the form
+					} else {
+						console.log(response);
+						reject(new SubmissionError({ _error: 'response' })); //trigger onSubmitFail on the form
+					}
 				}).catch((error: any) => {
 					reject(new SubmissionError({ _error: error })); //trigger onSubmitFail on the form
 				});

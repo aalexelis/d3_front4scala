@@ -23,7 +23,6 @@ export class Api {
             const areq = request
                 .post(req.url)
                 .set('Accept', 'application/json')
-                .set('Csrf-Token', req.csrfToken)
             req.payload.forEach((file: any) => {
                     areq.attach(file.name, file);
             });
@@ -38,7 +37,6 @@ export class Api {
                 .post(req.url)
                 .send(req.payload)
                 .set('Accept', 'application/json')
-                .set('Csrf-Token', req.csrfToken)
                 .end((error:any, res:any) => {
                     error ? resolve(error) : resolve(res);
                 });
