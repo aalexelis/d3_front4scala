@@ -4,7 +4,7 @@ import { submit } from 'redux-form'
 import { connect } from 'react-redux';
 import { Map } from 'immutable'
 
-import { Countries } from './Countries'
+import { Countries } from 'examples/common/Countries'
 import { Api, Request } from 'lib/Api'
 import { Validator } from './FormValidator'
 import FormView from './FormView'
@@ -37,7 +37,7 @@ class FormCtrl extends React.Component<Props, State> {
 			//Promise for redux-form
 			const formPromise = new Promise((resolve, reject) => {
 				const request: Request = {
-					url: jsRoutes.controllers.PlainTypescriptController.submitForm().url,
+					url: jsRoutes.controllers.ScalaJsTypescriptController.submitForm().url,
 					payload: {
 						name: formData.get('name'),
 						birthDate: formData.get('birthDate'),

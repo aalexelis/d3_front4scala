@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { SelectFormField } from 'lib/SelectFormField';
-import { Countries } from './Countries'
+import { Countries } from 'examples/common/Countries'
 
 interface Props {
     onSubmit: any;
@@ -63,5 +63,5 @@ class FormView extends React.Component<Props, any> {
 }
 
 export default reduxForm({
-    form: 'myform',
+    form: 'scalajs',
 })<any>(FormView);

@@ -14,7 +14,7 @@ object Validotor extends shared.Validator {
   }
 
   @JSExport
-  override def isValideEmail(s: String): Boolean = super.isValideEmail(s)
+  override def isValidEmail(s: String): Boolean = super.isValidEmail(s)
 
   @JSExport
   override def isValidPhone(s: String): Boolean = super.isValidPhone(s)

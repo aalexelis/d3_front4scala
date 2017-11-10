@@ -59,7 +59,7 @@ object PlainTypescriptController {
 
     implicit val emailReads: Reads[Email] = Reads[Email] {
       case JsString(value) =>
-        if (Validator.isValideEmail(value)) {
+        if (Validator.isValidEmail(value)) {
           JsSuccess(Email(value))
         } else {
           JsError("error.invalid.phone")

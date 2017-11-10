@@ -24,7 +24,8 @@ class ApplicationController @Inject() (
   def javascriptRoutes = Action { implicit request =>
     Ok(
       JavaScriptReverseRouter("jsRoutes")(
-        routes.javascript.PlainTypescriptController.submitForm
+        routes.javascript.PlainTypescriptController.submitForm,
+        routes.javascript.ScalaJsTypescriptController.submitForm
       )
     ).as("text/javascript")
   }

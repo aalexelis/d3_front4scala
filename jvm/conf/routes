@@ -6,6 +6,7 @@
 GET         /                                       controllers.ApplicationController.index
 
 POST        /api/plaintypescript/submit             controllers.PlainTypescriptController.submitForm
+POST        /api/scalajstypescript/submit           controllers.ScalaJsTypescriptController.submitForm
 
 # API routes for backend
 GET         /javascriptRoutes                       controllers.ApplicationController.javascriptRoutes
