@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { SelectFormField } from 'lib/SelectFormField';
-import { Countries } from 'examples/common/Countries'
+import { Countries } from './Countries'
 
 interface Props {
     onSubmit: any;

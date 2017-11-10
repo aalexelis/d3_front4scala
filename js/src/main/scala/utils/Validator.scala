@@ -5,7 +5,7 @@ import scala.scalajs.js.annotation.{ JSExport, JSExportTopLevel }
 
 import shared.DateType
 
-@JSExportTopLevel("Utils.Validator")
+@JSExportTopLevel("scalajs.Validator")
 object Validotor extends shared.Validator {
 
   implicit object JsDateType extends DateType[Date] {

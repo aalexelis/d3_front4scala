@@ -4,7 +4,6 @@ import { submit } from 'redux-form'
 import { connect } from 'react-redux';
 import { Map } from 'immutable'
 
-import { Countries } from 'examples/common/Countries'
 import { Api, Request } from 'lib/Api'
 import { Validator } from './FormValidator'
 import FormView from './FormView'

@@ -1,4 +1,4 @@
-declare var jsRoutes:{
+declare const jsRoutes:{
 	controllers : {
 		PlainTypescriptController: {
 			submitForm: () => { url: string }

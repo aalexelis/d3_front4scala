@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { SelectFormField } from 'lib/SelectFormField';
-import { Countries } from 'examples/common/Countries'
 
 interface Props {
     onSubmit: any;
@@ -17,9 +16,10 @@ class FormView extends React.Component<Props, any> {
     }
 
     render() {
-        const countries = Countries.map((v: any) => {
+        const countries = scalajs.Catalog.Countries.map((v: any) => {
             return { key: v.id, id: v.id, value: v.id, label: v.label };
         });
+
         const { success, error, handleSubmit, pristine, submitting } = this.props
         return (
             <form onSubmit={handleSubmit}>

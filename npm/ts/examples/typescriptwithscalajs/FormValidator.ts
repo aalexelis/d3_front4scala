@@ -1,10 +1,10 @@
 import { List, Map } from 'immutable'
 
 const validateObject = (s: any): boolean => s && Object.keys(s).length > 0
-const validateString = (s: string): boolean => s && Utils.Validator.minLength(s, 1)
-const validateDate = (s: string): boolean => s &&  Utils.Validator.isValidDate(s)
-const validatePhone = (s: string): boolean => s && Utils.Validator.isValidPhone(s)
-const validateEmail = (s: string): boolean => s && Utils.Validator.isValidEmail(s)
+const validateString = (s: string): boolean => s && scalajs.Validator.minLength(s, 1)
+const validateDate = (s: string): boolean => s &&  scalajs.Validator.isValidDate(s)
+const validatePhone = (s: string): boolean => s && scalajs.Validator.isValidPhone(s)
+const validateEmail = (s: string): boolean => s && scalajs.Validator.isValidEmail(s)
 
 export const Validator = (formData: Map<any, any>): List<string> => {
     let errors: List<any> = List<any>();
