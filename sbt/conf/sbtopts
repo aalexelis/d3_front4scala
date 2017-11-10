@@ -47,3 +47,11 @@
 #
 #-java-home <path>
 
+-J-Xms256M
+-J-Xmx2048M
+-J-Xss2M
+-J-XX:MaxMetaspaceSize=768M
+-J-XX:CompressedClassSpaceSize=128M
+-J-XX:+CMSClassUnloadingEnabled
+-Djava.awt.headless=true
+

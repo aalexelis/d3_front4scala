@@ -49,12 +49,12 @@ object ScalaJsTypescriptController {
 
     implicit val nameReads: Reads[Name] = Reads[Name] {
       case JsString(value) =>
-        if (Validator.minLength(value, 10)) {
+        if (Validator.minLength(value, 1)) {
           JsSuccess(Name(value))
         } else {
-          JsError("error.invalid.phone")
+          JsError("error.invalid.name")
         }
-      case _ => JsError("error.invalid.phone")
+      case _ => JsError("error.invalid.name")
     }
 
     implicit val phoneReads: Reads[PhoneNumber] = Reads[PhoneNumber] {
@@ -72,9 +72,9 @@ object ScalaJsTypescriptController {
         if (Validator.isValidEmail(value)) {
           JsSuccess(Email(value))
         } else {
-          JsError("error.invalid.phone")
+          JsError("error.invalid.email")
         }
-      case _ => JsError("error.invalid.phone")
+      case _ => JsError("error.invalid.email")
     }
 
     implicit val nationalityReads: Reads[Country] = Reads[Country] {
@@ -83,7 +83,7 @@ object ScalaJsTypescriptController {
           val country = shared.Catalog.Countries.filter(country => country.id == value).head
           JsSuccess(country)
         }.getOrElse(JsError("error.invalid.country"))
-      case _ => JsError("error.invalid.phone")
+      case _ => JsError("error.invalid.country")
     }
 
     implicit val formReads: Reads[Form] = (

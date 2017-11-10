@@ -37,8 +37,8 @@ How do we know we have a problem?
 ### Data structures have to be declared and maintained separately
 
 TODO: put gist of a data structure in back and front
-+++?code=jvm/app/utils/Validator.scala&lang=Scala&title=CatalogBackend
-+++?code=/npm/ts/examples/typescript/Countries.ts&lang=Typescript&title=CatalogFronten
++++?code=shared/src/main/scala/shared/Catalog.scala&lang=Scala&title=CatalogBackend
++++?code=/npm/ts/examples/typescript/Countries.ts&lang=Typescript&title=CatalogFrontend
 
 ##### What will happen if I add a country only in frontend? _Note to Self: Make common!_
 ---

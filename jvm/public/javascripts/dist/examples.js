@@ -10578,7 +10578,7 @@ Api.get = function (req) {
 };
 Api.attach = function (req) {
     return new Promise(function (resolve, reject) {
-        var areq = request.post(req.url).set('Accept', 'application/json').set('Csrf-Token', req.csrfToken);
+        var areq = request.post(req.url).set('Accept', 'application/json');
         req.payload.forEach(function (file) {
             areq.attach(file.name, file);
         });
@@ -10589,7 +10589,7 @@ Api.attach = function (req) {
 };
 Api.post = function (req) {
     return new Promise(function (resolve, reject) {
-        request.post(req.url).send(req.payload).set('Accept', 'application/json').set('Csrf-Token', req.csrfToken).end(function (error, res) {
+        request.post(req.url).send(req.payload).set('Accept', 'application/json').end(function (error, res) {
             error ? resolve(error) : resolve(res);
         });
     });
@@ -24562,11 +24562,16 @@ var FormCtrl = function (_React$Component) {
                             nationality: formData.get('nationality').id
                         }
                     };
-                    Api_1.Api.post(request).then(function () {
-                        _this.setState({
-                            success: true
-                        });
-                        resolve();
+                    Api_1.Api.post(request).then(function (response) {
+                        if (response.status === 200) {
+                            _this.setState({
+                                success: true
+                            });
+                            resolve();
+                        } else {
+                            console.log(response);
+                            reject(new redux_form_1.SubmissionError({ _error: 'response' }));
+                        }
                     }).catch(function (error) {
                         reject(new redux_form_1.SubmissionError({ _error: error }));
                     });

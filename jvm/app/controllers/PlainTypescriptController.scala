@@ -39,12 +39,12 @@ object PlainTypescriptController {
 
     implicit val nameReads: Reads[Name] = Reads[Name] {
       case JsString(value) =>
-        if (Validator.minLength(value, 10)) {
+        if (Validator.minLength(value, 1)) {
           JsSuccess(Name(value))
         } else {
-          JsError("error.invalid.phone")
+          JsError("error.invalid.name")
         }
-      case _ => JsError("error.invalid.phone")
+      case _ => JsError("error.invalid.name")
     }
 
     implicit val phoneReads: Reads[PhoneNumber] = Reads[PhoneNumber] {
@@ -62,9 +62,9 @@ object PlainTypescriptController {
         if (Validator.isValidEmail(value)) {
           JsSuccess(Email(value))
         } else {
-          JsError("error.invalid.phone")
+          JsError("error.invalid.email")
         }
-      case _ => JsError("error.invalid.phone")
+      case _ => JsError("error.invalid.email")
     }
 
     implicit val formReads: Reads[Form] = (
