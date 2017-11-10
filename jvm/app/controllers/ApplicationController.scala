@@ -21,13 +21,6 @@ class ApplicationController @Inject() (
     Ok(views.html.index())
   }
 
-  def appjs = Action.async { implicit request =>
-    request.cookies.get("auth") match {
-      case Some(cookie) if cookie.value.nonEmpty => controllers.Assets.versioned("/public", "javascripts/dist/members.js")(request)
-      case _ => controllers.Assets.versioned("/public", "javascripts/dist/public.js")(request)
-    }
-  }
-
   def javascriptRoutes = Action { implicit request =>
     Ok(
       JavaScriptReverseRouter("jsRoutes")(

@@ -11584,15 +11584,17 @@ var App = function (_React$Component) {
                 null,
                 React.createElement(
                     "div",
-                    { className: "header" },
-                    "Examples"
-                ),
-                React.createElement(
-                    "div",
                     { className: "container-fluid" },
-                    React.createElement(FormController_1.default, null)
-                ),
-                React.createElement("div", { className: "footer" })
+                    React.createElement(
+                        "div",
+                        { className: "row" },
+                        React.createElement(
+                            "div",
+                            { className: "col-xs-6" },
+                            React.createElement(FormController_1.default, null)
+                        )
+                    )
+                )
             );
         }
     }]);

@@ -4,8 +4,6 @@
 # ~~~~
 
 GET         /                                       controllers.ApplicationController.index
-POST        /                                       controllers.ApplicationController.index
-GET         /app.js                                 controllers.ApplicationController.appjs
 
 POST        /api/plaintypescript/submit             controllers.PlainTypescriptController.submitForm
 

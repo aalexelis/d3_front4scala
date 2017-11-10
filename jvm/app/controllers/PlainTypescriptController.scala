@@ -1,10 +1,9 @@
 package controllers
 
 import javax.inject._
-import org.joda.time.{ DateTime, LocalDate }
+
 import play.api.libs.json._
 import play.api.libs.functional.syntax._
-
 import play.api.i18n.{ I18nSupport, MessagesApi }
 import play.api.mvc.{ Action, Controller }
 
@@ -23,14 +22,17 @@ class PlainTypescriptController @Inject() (
     (JsPath \ "nationality").read[String]
   )(Form.apply _)
 
-  def submitForm = Action { implicit request =>
+  def submitForm = Action(parse.json) { implicit request =>
+    val form = request.body.validate[Form]
 
-    val res = for {
-      json <- request.body.asJson
-    } yield {
-
-    }
-    Ok
+    form.fold(
+      errors => {
+        BadRequest(Json.obj("message" -> JsError.toJson(errors)))
+      },
+      form => {
+        Ok(Json.obj("name" -> form.name, "birthDate" -> form.birthDate, "email" -> form.email, "phone" -> form.phone, "nationality" -> form.nationality))
+      }
+    )
   }
 
 }

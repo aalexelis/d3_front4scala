@@ -15,11 +15,13 @@ class App extends React.Component<any, any> {
 	render() {
 		return (
 			<div>
-				<div className="header">Examples</div>
 				<div className="container-fluid">
-					<FormController />
+					<div className="row">
+  					<div className="col-xs-6">
+						<FormController />
+						</div>
+					</div>
 				</div>
-				<div className="footer"></div>
 			</div>
 		);
 	}
