@@ -45,10 +45,10 @@ class FormView extends React.Component<Props, any> {
                 </div>
 
                 <div className="form-group required">
-                    <label className="control-label" htmlFor="currentLocation">Current location</label>
+                    <label className="control-label" htmlFor="nationality">Nationality</label>
                     <Field
                         required={true}
-                        name='currentLocation'
+                        name='nationality'
                         options={countries}
                         component={SelectFormField}
                         placeholder='Select or type...'

@@ -38,7 +38,13 @@ class FormCtrl extends React.Component<Props, State> {
 			const formPromise = new Promise((resolve, reject) => {
 				const request: Request = {
 					url: jsRoutes.controllers.PlainTypescriptController.submitForm().url,
-					payload: formData.toJS()
+					payload: {
+						name: formData.get('name'),
+						birthDate: formData.get('birthDate'),
+						phone: formData.get('phone'),
+						email: formData.get('email'),
+						nationality: formData.get('nationality').id
+					}
 				}
 				Api.post(request).then(() => {
 					this.setState({

@@ -33,8 +33,8 @@ const validateEmail = (email: string): boolean => email && /^[A-Z0-9._%+-]+@[A-Z
 export const Validator = (formData: Map<any, any>): List<string> => {
     let errors: List<any> = List<any>();
 
-    if (!validateObject(formData.get('currentLocation'))) {
-        errors = errors.push('Current location');
+    if (!validateObject(formData.get('nationality'))) {
+        errors = errors.push('Nationality');
     }
 
     if (!validateEmail(formData.get('email'))) {
