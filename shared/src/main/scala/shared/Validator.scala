@@ -1,8 +1,14 @@
 package shared
 
-import scala.scalajs.js.Date
-import scala.scalajs.js.annotation.JSExport
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+
 import scala.util.Try
+
+trait DateType[T] {
+  def parse(s: String): T
+  def formatISO(d: T): String
+}
 
 trait Validator {
 
@@ -32,11 +38,11 @@ trait Validator {
     }
   }
 
-  def isValidDate(s: String): Boolean = {
+  def isValidDate[T](s: String)(implicit dateType: DateType[T]): Boolean = {
     def extractDate(s: String): Boolean = {
       Try {
-        val d: Date = new Date(Date.parse(s))
-        val t = d.toISOString()
+        val d: T = dateType.parse(s)
+        val t = dateType.formatISO(d)
         t
       }.isSuccess
     }
