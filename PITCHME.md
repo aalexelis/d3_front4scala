@@ -13,13 +13,16 @@
 ---
 @title[Problems]
 ## The problem
-how do we know we have a problem?
+How do we know we have a problem?
 - Data structures have to be declared and maintained separately
 - There is similar code back and front
 - things break silently(js) when sync is lost
 ---
 @title[Problems: Duplicate data models]
 ### Data structures have to be declared and maintained separately
+
+TODO: put gist of a data structure in back and front
++++?code=jvm/app/controllers/ApplicationController.scala&lang=Scala
 ---
 @title[Problems: Duplicate code]
 ### Data structures have to be declared and maintained separately
