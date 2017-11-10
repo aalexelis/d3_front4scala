@@ -49,27 +49,9 @@ lazy val jvm = (project in file("jvm")).
       specs2 % Test,
       cache
     ),
-    scalikejdbcSettings,
     // Compile the project before generating Eclipse files, so that generated .scala or .class files for views and routes are present
     EclipseKeys.preTasks := Seq(compile in Compile),
 
-    maintainer in Linux := "Stefan Meier",
-    packageSummary in Linux := "play-scalajs-typescript-react-example",
-    packageDescription := "play-scalajs-typescript-react-example",
-    rpmRelease := "1",
-    rpmVendor := "example.com",
-    rpmUrl := Some("https://github.com/stefanrmeier/play-scalajs-typescript-react-example"),
-    rpmLicense := Some("Apache v2"),
-    packageName := "example",
-
-    javaOptions in Universal ++= Seq(
-      // Since play uses separate pidfile we have to provide it with a proper path
-      // name of the pid file must be play.pid
-      s"-Dpidfile.path=/var/run/${packageName.value}/play.pid",
-
-      // file with environment specific settings ( includes application.conf and then overrides some settings )
-      s"-Dconfig.resource=environment.conf"
-    ),
     routesGenerator := InjectedRoutesGenerator,
     routesImport += "utils.route.Binders._",
     scalacOptions ++= Seq(
@@ -92,7 +74,7 @@ lazy val jvm = (project in file("jvm")).
     libraryDependencies += "com.github.ghik" %% "silencer-lib" % "0.5",
     addCompilerPlugin("com.github.ghik" %% "silencer-plugin" % "0.5")
   ).
-  enablePlugins(PlayScala, RpmPlugin).
+  enablePlugins(PlayScala).
   dependsOn(sharedJVM)
 
 lazy val js = (project in file("js")).
