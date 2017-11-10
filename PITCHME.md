@@ -16,19 +16,29 @@
 How do we know we have a problem?
 - Data structures have to be declared and maintained separately
 - There is similar code back and front
-- things break silently(js) when sync is lost
+- things break silently _(js :scream:)_ when sync is lost
 ---
 @title[Problems: Duplicate data models]
 ### Data structures have to be declared and maintained separately
 
 TODO: put gist of a data structure in back and front
-+++?code=jvm/app/controllers/ApplicationController.scala&lang=Scala
++++?code=jvm/app/utils/Validator.scala&lang=Scala&title=CatalogBackend
++++?code=/npm/ts/examples/typescript/Countries.ts&lang=Typescript&title=CatalogFronten
+
+##### What will happen if I add a country only in frontend? _Note to Self: Make common!_
 ---
 @title[Problems: Duplicate code]
-### Data structures have to be declared and maintained separately
+### There is similar code back and front
+
++++?code=jvm/app/utils/Validator.scala&lang=Scala
++++?code=/npm/ts/examples/typescript/FormValidator.ts&lang=Typescript
+
+##### They look so alike!　_Note to Self: DRY!_
 ---
 @title[Problems: Silent errors]
 ### Things break silently when sync is lost
+
+TODO: Demo
 ---
 @title[More problems]
 ## More problems
