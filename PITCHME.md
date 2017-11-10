@@ -1,15 +1,30 @@
 ---
 @title[Frontpage]
-# Scalaバックエンドシステムのフロント選択: ScalaJS or Typescript？
+## Scalaバックエンドシステムのフロント選択: ScalaJS or Typescript？
 
-## Andreas Alexelis
-## Bizreach Co. Ltd., 2017-11-10
+#### Andreas Alexelis
+#### Bizreach Co. Ltd., 2017-11-10
 ---
 @title[About the presenter]
 ## About the presenter
+
+- Name: Andreas Alexelis
+- Nationality: Greece
+- Age: 45 :scream:
+- First computer was a [TI-994A](http://oldcomputers.net/ti994a.html)
+- Learned Pascal at University
+- Wrote in C,C++ for Master Thesis
+- Suffered enterprise Java at a big Japanese maker company
+- Had several nervous breakdowns from Javascript when free-lancing
+- Happily writing Scala/... at Stanby, Bizreach currently.
 ---
 @title[Introduction]
 ## Introduction
+Let's get to know each other!
+- What kind of team do you work in (BE engineers, FE engineers, designers)
+- What backend technologies do you use?
+- What frontend technologies do you use?
+- Are you happy with the level of integration?
 ---
 @title[Problems]
 ## The problem
@@ -38,7 +53,6 @@ TODO: put gist of a data structure in back and front
 @title[Problems: Silent errors]
 ### Things break silently when sync is lost
 
-TODO: Demo
 ---
 @title[More problems]
 ## More problems
@@ -49,6 +63,8 @@ TODO: Demo
 ---
 @title[More problems: Frontend version management]
 ## Frontend version management is tedious
+
+![npm outdated](pitchme_assets/maintenance.png)
 ---
 @title[More problems: Logic in the view]
 ## Complicated business logic in frontend
