@@ -1,18 +1,7 @@
 import * as request from 'superagent';
 
-export enum RequestType {
-    GET,
-    POST,
-    PUT,
-    DELETE,
-    ATTACH
-};
-
 export interface Request {
-    authToken?: string;
     url: string;
-    contentType?: string;
-    requestType: RequestType;
     payload?: any;
     csrfToken?: string;
 };
@@ -23,7 +12,6 @@ export class Api {
             request
                 .get(req.url)
                 .set('Accept', 'application/json')
-                .set('X-auth-token', req.authToken)
                 .query(req.payload)
                 .end((error:any, res:any) => {
                     error ? resolve(error) : resolve(res);
@@ -36,7 +24,6 @@ export class Api {
                 .post(req.url)
                 .set('Accept', 'application/json')
                 .set('Csrf-Token', req.csrfToken)
-                .set('X-auth-token', req.authToken)
             req.payload.forEach((file: any) => {
                     areq.attach(file.name, file);
             });
@@ -52,7 +39,6 @@ export class Api {
                 .send(req.payload)
                 .set('Accept', 'application/json')
                 .set('Csrf-Token', req.csrfToken)
-                .set('X-auth-token', req.authToken)
                 .end((error:any, res:any) => {
                     error ? resolve(error) : resolve(res);
                 });
@@ -64,7 +50,6 @@ export class Api {
                 .delete(req.url)
                 .send(req.payload)
                 .set('Accept', 'application/json')
-                .set('X-auth-token', req.authToken)
                 .end((error:any, res:any) => {
                     error ? resolve(error) : resolve(res);
                 });
@@ -76,7 +61,6 @@ export class Api {
                 .put(req.url)
                 .send(req.payload)
                 .set('Accept', 'application/json')
-                .set('X-auth-token', req.authToken)
                 .end((error:any, res:any) => {
                     error ? resolve(error) : resolve(res);
                 });

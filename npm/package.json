@@ -1,18 +1,18 @@
 {
-  "name": "example",
+  "name": "ts-react-example",
   "version": "1.0.0",
   "description": "",
-  "repository": "https://github.com/stefanrmeier/play-scalajs-typescript-react-example",
+  "repository": "https://github.com/aalexelis/d3_front4scala",
   "main": "index.js",
   "scripts": {
     "tslint": "./node_modules/.bin/tslint -c tslint.json ts/**/**.ts tss/**/**.tsx",
-    "clean": "rm -rf dist/* && rm -rf ../jvm/public/javascripts/dist/*",
-    "ship:js": "find ./dist/ -name '*.js' -exec cp -prv '{}' '../jvm/public/javascripts/dist' ';'",
-    "build:css": "node-sass --include-path scss --output-style compressed scss/main.scss  dist/main.css && cp dist/main.css ../jvm/public/stylesheets/main.css",
-    "build:watch": "export NODE_ENV=development  && ./node_modules/.bin/webpack --progress --watch --config ./webpack/webpack.dev.config.js",
-    "build:dev": "export NODE_ENV=development  && ./node_modules/.bin/webpack --progress --config ./webpack/webpack.dev.config.js",
-    "build:prod": "export NODE_ENV=production && ./node_modules/.bin/webpack --hide-modules --progress --config ./webpack/webpack.prod.config.js",
-    "build": "npm run build:prod && npm run build:css"
+    "clean": "rm -rf dist/* && rm -rf ../jvm/public/javascripts/dist/*",    
+    "ship:js": "find ./dist/ -name '*.js' -exec cp -prv '{}' '../jvm/public/javascripts/dist' ';'",    
+    "build:css": "node-sass --include-path scss --output-style compressed ./scss/main.scss  ./dist/main.css",
+    "js:watch": "export NODE_ENV=development  && ./node_modules/.bin/webpack --progress --watch --config ./webpack/webpack.dev.config.js",
+    "build:dev": "export NODE_ENV=development  && ./node_modules/.bin/webpack --progress --config ./webpack/webpack.dev.config.js && npm run build:css",
+    "build:prod": "export NODE_ENV=production && ./node_modules/.bin/webpack --hide-modules --progress --config ./webpack/webpack.prod.config.js && npm run build:css",
+    "build": "npm run build:prod"
   },
   "author": "Stefan Meier",
   "license": "ISC",

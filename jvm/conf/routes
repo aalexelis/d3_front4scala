@@ -7,6 +7,8 @@ GET         /                                       controllers.ApplicationContr
 POST        /                                       controllers.ApplicationController.index
 GET         /app.js                                 controllers.ApplicationController.appjs
 
+POST        /api/plaintypescript/submit             controllers.PlainTypescriptController.submitForm
+
 # API routes for backend
 GET         /javascriptRoutes                       controllers.ApplicationController.javascriptRoutes
 
