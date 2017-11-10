@@ -66,20 +66,32 @@ TODO: put gist of a data structure in back and front
 
 ![npm outdated](pitchme_assets/maintenance.png)
 ---
-@title[More problems: Logic in the view]
-## Complicated business logic in frontend
----
 @title[More problems: Team skillset]
 ## Skillset of dev-team
+
+- Can frontend developers understand and __maintain__ a codebase that uses technologies like ScalaJs (or even Twirl!)
+- Can backend developers understand and __maintain__ a codebase that uses technologies like Redux, Saga etc.
+- How long does it take to add a button to a screen?
+  A property to a JSON model?
+  A new screen?
 ---
 @title[More problems: Security]
 ## Security
+
+- One always has to be careful
+- With SPA, you have to be __very__ careful
 ---
 @title[Basics: Architecture]
 ## Architecture
 - The MVC paradigm
+![mvc](https://www.codeproject.com/KB/aspnet/344292/mvc.PNG)
 - The MVVM paradigm
-- A typical modern system paradigm
+![mvvm](https://cdn-images-1.medium.com/max/1600/1*BpxMFh7DdX0_hqX6ABkDgw.png)
+- Modern system design paradigm
+  - Front-end View on the device -> UI/UX
+  - Front-end Controller or ViewModel -> Local state, change management & back-end interface
+  - Back-end Controller -> front-end interface
+  - Back-end Model -> Business Logic
 ---
 @title[Basics: Team]
 ## Team
@@ -96,14 +108,17 @@ TODO: put gist of a data structure in back and front
 @title[Evolution of Web Apps]
 ## Evolution of Web applications
 - Plain HTML -> Form example with back-end validation
-  None of the problems but really lame
+  - None of the problems but really lame
 - HTML + js file -> Form example
-  Breaks immediately when not maintained properly (give example)
+  - Breaks immediately when not maintained properly
 - Server rendered HTML + embedded js -> Hand made or Lift form example
-  Solves one part of maintenance problem, but js is kept embedded within host language, which has it's own problems
-- Other??
+  - Solves one part of maintenance problem, but js is kept embedded within host language, which has it's own problems
 - API backend + Typescript Frontend
+  - Solves the silent failure mode, but does not allow code sharing.
 - Integrated Scala backend + ScalaJS frontend
+  - Solves the code sharing problem, but it is hard for the front-end developers.
+- Integrated Scala backend + ScalaJs + Typescript frontend
+  - Seems promising!
 ---
 @Title[Typescript]
 ## Typescript
@@ -112,7 +127,7 @@ TODO: put gist of a data structure in back and front
 - which part of the problem does it solve
 - what are it's shortcomings
 TODO: references from Typescript website
-- https://www.typescriptlang.org/
+- [www.typescriptlang.org](https://www.typescriptlang.org/)
 - how to install it for Scala applications
 - how to streamline compiling
 ---
@@ -123,12 +138,8 @@ TODO: references from Typescript website
 - which part of the problem does it solve
 - what are it's shortcomings: eco-system, designer difficulty
 TODO: references from ScalaJs website
-- https://www.scala-js.org/
+- [www.scala-js.org](https://www.scala-js.org/)
 - the screen that shows the comparison
 - how to setup in SBT scala applications
 ---
-Angular
-- TODO: Should use directly from myjlpt?
----
-React
-- TODO: Can I find some quick samples for ScalaJS/Play ?
+@Title[Code Samples:]
